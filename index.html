@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Chat Application</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <link href="./styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="chatbot-container">
+        <button onclick="window.location.href='chatHistory.html'" class="view-history-button">View Chat History</button>
+        ...
+    </div>
+    <div id="chatHistoryModal" class="modal">
+        <div class="modal-content">
+            <h2>Your Chat History</h2>
+            <div id="chatHistory"></div>
+            <button class="close-button">Close</button>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script src="./script.js"></script>
+    </div>
+    <div class="chat-container chat-window">
+
+      <div class="chat-header">
+        <div class="token-counter">Tokens: <span id="total-token-count">16000</span></div>
+        <div class="token-counter">Current Message Size (In Tokens): <span id="current-token-count">0</span></div>  
+        <div class="token-counter">Remaining: <span id="remaining-token-count">16000</span></div>
+      </div>
+
+      <div class="input-field-container">
+        <label for="api-key-field">OpenAI API Key:</label>
+        <input type="text" id="api-key-field" placeholder="Enter your OpenAI API Key">
+        <button id="save-key">Save Key</button>
+      </div>
+      
+      <div class="input-field-container">
+        <label for="model-selection">Select Model:</label>
+        <select id="model-selection">
+          <option value="gpt-3.5-turbo-16k">GPT-3.5 Turbo</option>
+          <option value="gpt-4">GPT-4</option>  
+        </select>
+      </div>
+
+      <button class="new-chat-button">Start Chat</button>
+
+      <div class="chat-body">
+        <div class="chat-messages" id="chat-messages"></div>
+      </div>
+
+      <div class="chat-input">
+        <textarea class="input-field" id="input-field" rows="1"></textarea>
+        <div class="char-counter" id="char-counter">0 characters</div>
+        <button class="send-button" id="send-button">Send</button> 
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <script src="./script.js"></script>
+
+</body>
+
+</html>

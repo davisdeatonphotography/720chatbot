@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat History</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Chat History</h1>
+        <div id="chat-history"></div>
+    </div>
+    <script>
+        console.log('Fetching chats...');
+        fetch('/getChats', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Received response:', data);
+            if (data.success) {
+                const chatHistoryDiv = document.getElementById('chat-history');
+                data.chats.forEach(chat => {
+                    console.log('Rendering chat:', chat);
+                    const chatDiv = document.createElement('div');
+                    chatDiv.textContent = chat.messages.join(' '); // Replace this with your desired chat format
+                    chatHistoryDiv.appendChild(chatDiv);
+                });
+            } else {
+                console.error('Error fetching chats:', data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>
